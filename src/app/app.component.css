@@ -1,0 +1,79 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+  color: #172033;
+  background: #f5f7fb;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 5%;
+  background: white;
+  border-bottom: 1px solid #e5e9f2;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #172033;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #3156d3;
+  color: white;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+nav a {
+  color: #526078;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav .nav-button {
+  padding: 0.7rem 1rem;
+  color: white;
+  background: #3156d3;
+  border-radius: 8px;
+}
+
+.main-content {
+  width: min(1100px, 90%);
+  min-height: 75vh;
+  margin: 2.5rem auto;
+}
+
+.site-footer {
+  padding: 1.5rem;
+  color: #718096;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 520px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  nav {
+    flex-wrap: wrap;
+  }
+}

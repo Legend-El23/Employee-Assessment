@@ -1,14 +1,13 @@
+
 export interface EmployeeAddress {
-street: string;
-suite: string;
-city: string;
-zipcode: string;
-
-geo: {
-  lat:  string;
-  lng: string;
-};
-
+  street: string;
+  suite: string;
+  city: string;
+  zipcode: string;
+  geo: {
+    lat: string;
+    lng: string;
+  };
 }
 
 export interface EmployeeCompany {
@@ -22,9 +21,16 @@ export interface Employee {
   name: string;
   username: string;
   email: string;
+  address: EmployeeAddress;
   phone: string;
   website: string;
-
-  address: EmployeeAddress;
   company: EmployeeCompany;
+}
+
+export interface NewEmployee {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  city: string;
 }

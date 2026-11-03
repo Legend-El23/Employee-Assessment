@@ -1,1 +1,91 @@
-<p>employee-list works!</p>
+
+<section class="page-heading">
+  <div>
+    <p class="eyebrow">TEAM MANAGEMENT</p>
+    <h1>Employee Directory</h1>
+    <p class="subtitle">
+      Browse and manage your organization's employees.
+    </p>
+  </div>
+
+  <a routerLink="/add-employee" class="primary-button">
+    + Add Employee
+  </a>
+</section>
+
+<section class="toolbar">
+  <div class="search-box">
+    <span aria-hidden="true">⌕</span>
+    <input
+      type="search"
+      [(ngModel)]="searchTerm"
+      placeholder="Search name, email, company or city..."
+      aria-label="Search employees"
+    />
+    <button
+      *ngIf="searchTerm"
+      type="button"
+      (click)="clearSearch()"
+      aria-label="Clear search"
+    >
+      ×
+    </button>
+  </div>
+
+  <button class="sort-button" type="button" (click)="toggleSort()">
+    Name {{ sortDirection === 'asc' ? '↑' : '↓' }}
+  </button>
+</section>
+
+<div *ngIf="loading" class="state-card" role="status">
+  <div class="spinner"></div>
+  <p>Loading employees...</p>
+</div>
+
+<div *ngIf="errorMessage && !loading" class="state-card error-state" role="alert">
+  <h2>Unable to load employees</h2>
+  <p>{{ errorMessage }}</p>
+  <button class="primary-button" (click)="loadEmployees()">
+    Try Again
+  </button>
+</div>
+
+<ng-container *ngIf="!loading && !errorMessage">
+  <p class="results-count">
+    {{ filteredEmployees.length }} employees found
+  </p>
+
+  <div *ngIf="filteredEmployees.length; else emptyState" class="employee-grid">
+    <article class="employee-card" *ngFor="let employee of filteredEmployees">
+      <div class="card-top">
+        <div class="avatar">
+          {{ employee.name.charAt(0).toUpperCase() }}
+        </div>
+        <span class="employee-id">#{{ employee.id }}</span>
+      </div>
+
+      <h2>{{ employee.name }}</h2>
+      <p class="company">{{ employee.company.name }}</p>
+
+      <div class="employee-info">
+        <p><span>Email</span>{{ employee.email }}</p>
+        <p><span>Phone</span>{{ employee.phone }}</p>
+        <p><span>City</span>{{ employee.address.city }}</p>
+      </div>
+
+      <a [routerLink]="['/employee', employee.id]" class="details-link">
+        View details <span aria-hidden="true">→</span>
+      </a>
+    </article>
+  </div>
+
+  <ng-template #emptyState>
+    <div class="state-card">
+      <h2>No employees found</h2>
+      <p>Try another search term or clear your search.</p>
+      <button class="secondary-button" (click)="clearSearch()">
+        Clear Search
+      </button>
+    </div>
+  </ng-template>
+</ng-container>

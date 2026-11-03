@@ -1,16 +1,24 @@
-import { TestBed } from '@angular/core/testing';
+/// <reference types="jasmine" />
 
-import { ServiceService } from './service.service';
+import { EmployeeService } from './service.service';
+import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+
 
 describe('ServiceService', () => {
-  let service: ServiceService;
-
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(ServiceService);
+    TestBed.configureTestingModule({
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ]
+    });
+
   });
 
   it('should be created', () => {
+    const service = TestBed.inject(EmployeeService);
     expect(service).toBeTruthy();
   });
 });

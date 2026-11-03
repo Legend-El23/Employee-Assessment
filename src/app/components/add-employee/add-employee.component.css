@@ -1,0 +1,124 @@
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #3156d3;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form-card {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border: 1px solid #e6eaf1;
+  border-radius: 16px;
+}
+
+.form-heading {
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  color: #3156d3;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+h1 {
+  margin: 0.4rem 0;
+}
+
+.form-heading > p:last-child {
+  color: #718096;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.85rem 1rem;
+  border: 1px solid #dce2ec;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.form-field input:focus {
+  border-color: #3156d3;
+  outline: 2px solid #3156d31a;
+}
+
+.error {
+  color: #c53030;
+  font-size: 0.8rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.primary-button,
+.cancel-button {
+  padding: 0.8rem 1.2rem;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary-button {
+  color: white;
+  background: #3156d3;
+}
+
+.primary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cancel-button {
+  color: #526078;
+  background: #edf0f5;
+}
+
+@media (max-width: 600px) {
+  .form-card {
+    padding: 1.25rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: auto;
+  }
+}

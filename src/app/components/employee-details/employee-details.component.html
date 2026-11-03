@@ -1,1 +1,65 @@
-<p>employee-details works!</p>
+
+<a routerLink="/" class="back-link">← Back to employees</a>
+
+<section *ngIf="employee; else notFound" class="details-card">
+  <div class="profile-header">
+    <div class="avatar">
+      {{ employee.name.charAt(0).toUpperCase() }}
+    </div>
+    <div>
+      <p class="eyebrow">EMPLOYEE PROFILE</p>
+      <h1>{{ employee.name }}</h1>
+      <p>{{ employee.company.name }}</p>
+    </div>
+  </div>
+
+  <div class="details-grid">
+    <section>
+      <h2>Contact Information</h2>
+      <p><strong>Email</strong>{{ employee.email }}</p>
+      <p><strong>Phone</strong>{{ employee.phone }}</p>
+      <p><strong>Website</strong>
+        <a
+          *ngIf="employee.website"
+          [href]="'https://' + employee.website"
+          target="_blank"
+          rel="noopener noreferrer"
+        >{{ employee.website }}</a>
+        <span *ngIf="!employee.website">Not provided</span>
+      </p>
+    </section>
+
+    <section>
+      <h2>Address</h2>
+      <p><strong>Street</strong>{{ employee.address.street || 'Not provided' }}</p>
+      <p><strong>Suite</strong>{{ employee.address.suite || 'Not provided' }}</p>
+      <p><strong>City</strong>{{ employee.address.city }}</p>
+      <p><strong>ZIP Code</strong>{{ employee.address.zipcode || 'Not provided' }}</p>
+    </section>
+
+    <section>
+      <h2>Company Information</h2>
+      <p><strong>Company</strong>{{ employee.company.name }}</p>
+      <p><strong>Catchphrase</strong>
+        {{ employee.company.catchPhrase || 'Not provided' }}
+      </p>
+      <p><strong>Business</strong>
+        {{ employee.company.bs || 'Not provided' }}
+      </p>
+    </section>
+
+    <section>
+      <h2>Account Information</h2>
+      <p><strong>Username</strong>{{ employee.username || 'Not provided' }}</p>
+      <p><strong>Employee ID</strong>{{ employee.id }}</p>
+    </section>
+  </div>
+</section>
+
+<ng-template #notFound>
+  <div class="details-card">
+    <h1>Employee not found</h1>
+    <p>This employee may not exist or the page was refreshed.</p>
+    <a routerLink="/" class="primary-button">Return to Directory</a>
+  </div>
+</ng-template>

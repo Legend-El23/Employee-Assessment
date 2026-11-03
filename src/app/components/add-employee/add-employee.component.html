@@ -1,1 +1,95 @@
-<p>add-employee works!</p>
+
+<a routerLink="/" class="back-link">← Back to employees</a>
+
+<section class="form-card">
+  <div class="form-heading">
+    <p class="eyebrow">TEAM MANAGEMENT</p>
+    <h1>Add New Employee</h1>
+    <p>Enter the employee's information below.</p>
+  </div>
+
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="name">Full Name</label>
+        <input id="name" formControlName="name" placeholder="e.g. Jane Doe" />
+        <small
+          class="error"
+          *ngIf="formControls.name.invalid &&
+            (formControls.name.touched || submitted)"
+        >
+          Name is required.
+        </small>
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email Address</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="jane@example.com"
+        />
+        <small
+          class="error"
+          *ngIf="formControls.email.invalid &&
+            (formControls.email.touched || submitted)"
+        >
+          <span *ngIf="formControls.email.errors?.['required']">
+            Email is required.
+          </span>
+          <span *ngIf="formControls.email.errors?.['email']">
+            Enter a valid email address.
+          </span>
+        </small>
+      </div>
+
+      <div class="form-field">
+        <label for="phone">Phone Number</label>
+        <input id="phone" formControlName="phone" placeholder="e.g. 024 000 0000" />
+        <small
+          class="error"
+          *ngIf="formControls.phone.invalid &&
+            (formControls.phone.touched || submitted)"
+        >
+          Phone number is required.
+        </small>
+      </div>
+
+      <div class="form-field">
+        <label for="company">Company</label>
+        <input id="company" formControlName="company" placeholder="Company name" />
+        <small
+          class="error"
+          *ngIf="formControls.company.invalid &&
+            (formControls.company.touched || submitted)"
+        >
+          Company is required.
+        </small>
+      </div>
+
+      <div class="form-field full-width">
+        <label for="city">City</label>
+        <input id="city" formControlName="city" placeholder="City" />
+        <small
+          class="error"
+          *ngIf="formControls.city.invalid &&
+            (formControls.city.touched || submitted)"
+        >
+          City is required.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <a routerLink="/" class="cancel-button">Cancel</a>
+      <button
+        type="submit"
+        class="primary-button"
+        [disabled]="employeeForm.invalid && submitted"
+      >
+        Add Employee
+      </button>
+    </div>
+  </form>
+</section>

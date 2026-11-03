@@ -1,0 +1,95 @@
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #3156d3;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.details-card {
+  padding: 2rem;
+  background: white;
+  border: 1px solid #e6eaf1;
+  border-radius: 16px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  color: #3156d3;
+  background: #eaf0ff;
+  border-radius: 16px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.eyebrow {
+  color: #3156d3;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+h1 {
+  margin: 0.3rem 0;
+  overflow-wrap: anywhere;
+}
+
+.profile-header p:last-child {
+  color: #718096;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
+.details-grid section {
+  min-width: 0;
+}
+
+.details-grid h2 {
+  font-size: 1.1rem;
+}
+
+.details-grid p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  overflow-wrap: anywhere;
+  margin: 1rem 0;
+}
+
+.details-grid strong {
+  color: #8792a5;
+  font-size: 0.8rem;
+}
+
+.details-grid a {
+  color: #3156d3;
+}
+
+@media (max-width: 600px) {
+  .details-card {
+    padding: 1.25rem;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,215 @@
+
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  color: #3156d3;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+h1 {
+  margin: 0.4rem 0;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.subtitle,
+.company {
+  color: #718096;
+}
+
+.primary-button,
+.secondary-button,
+.sort-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary-button {
+  color: white;
+  background: #3156d3;
+}
+
+.secondary-button,
+.sort-button {
+  color: #3156d3;
+  background: #eaf0ff;
+}
+
+.toolbar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 0.6rem;
+  padding: 0 1rem;
+  background: white;
+  border: 1px solid #e1e6ef;
+  border-radius: 10px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.9rem 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font: inherit;
+}
+
+.search-box button {
+  border: 0;
+  background: transparent;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.results-count {
+  margin-bottom: 1rem;
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.employee-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.employee-card {
+  min-width: 0;
+  padding: 1.4rem;
+  background: white;
+  border: 1px solid #e6eaf1;
+  border-radius: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.employee-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px #1720330d;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: #3156d3;
+  background: #eaf0ff;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.employee-id {
+  color: #8792a5;
+  font-size: 0.8rem;
+}
+
+.employee-card h2 {
+  margin: 1rem 0 0.25rem;
+  overflow-wrap: anywhere;
+  font-size: 1.1rem;
+}
+
+.company {
+  margin-top: 0;
+  overflow-wrap: anywhere;
+}
+
+.employee-info {
+  margin: 1.25rem 0;
+  border-top: 1px solid #edf0f5;
+}
+
+.employee-info p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  overflow-wrap: anywhere;
+  font-size: 0.9rem;
+}
+
+.employee-info span {
+  color: #8792a5;
+  font-size: 0.75rem;
+}
+
+.details-link {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.8rem;
+  border-top: 1px solid #edf0f5;
+  color: #3156d3;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.state-card {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  background: white;
+  border: 1px solid #e6eaf1;
+  border-radius: 14px;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  margin: auto;
+  border: 3px solid #dce4f8;
+  border-top-color: #3156d3;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+  .employee-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .toolbar {
+    flex-direction: column;
+  }
+
+  .employee-grid {
+    grid-template-columns: 1fr;
+  }
+}
