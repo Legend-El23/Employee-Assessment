@@ -1,10 +1,7 @@
-
-<a routerLink="/" class="back-link">← Back to employees</a>
-
 <section class="form-card">
   <div class="form-heading">
     <p class="eyebrow">TEAM MANAGEMENT</p>
-    <h1>Add New Employee</h1>
+    <h2 id="add-employee-modal-title">Add New Employee</h2>
     <p>Enter the employee's information below.</p>
   </div>
 
@@ -12,15 +9,39 @@
     <div class="form-grid">
       <div class="form-field">
         <label for="name">Full Name</label>
-        <input id="name" formControlName="name" placeholder="e.g. Jane Doe" />
-        <small
-          class="error"
-          *ngIf="formControls.name.invalid &&
-            (formControls.name.touched || submitted)"
-        >
-          Name is required.
-        </small>
+        <input
+          id="name"
+          formControlName="name"
+          placeholder="e.g. Divine Domson"
+        />
+        @if (
+  employeeForm.controls['name'].invalid &&
+  (employeeForm.controls['name'].touched || submitted)
+) {
+  <small class="error">
+    @if (employeeForm.controls['name'].errors?.['required']) {
+      <span>Name is required.</span>
+    }
+
+    @if (employeeForm.controls['name'].errors?.['pattern']) {
+      <span>Numbers and special characters are not allowed in the name.</span>
+    }
+  </small>
+}
       </div>
+
+      <div class="form-field">
+  <label for="username">Username</label>
+  <input
+    id="username"
+    formControlName="username"
+    placeholder="e.g. divinedomson"
+  />
+  @if (employeeForm.controls['username'].invalid &&
+      (employeeForm.controls['username'].touched || submitted)) {
+    <small class="error">Username is required.</small>
+  }
+</div>
 
       <div class="form-field">
         <label for="email">Email Address</label>
@@ -28,68 +49,111 @@
           id="email"
           type="email"
           formControlName="email"
-          placeholder="jane@example.com"
+          placeholder="UncleSena@example.com"
         />
-        <small
-          class="error"
-          *ngIf="formControls.email.invalid &&
-            (formControls.email.touched || submitted)"
-        >
-          <span *ngIf="formControls.email.errors?.['required']">
-            Email is required.
-          </span>
-          <span *ngIf="formControls.email.errors?.['email']">
-            Enter a valid email address.
-          </span>
-        </small>
+        @if (
+          employeeForm.controls["email"].invalid &&
+          (employeeForm.controls["email"].touched || submitted)
+        ) {
+          <small class="error">
+            @if (employeeForm.controls["email"].errors?.["required"]) {
+              <span>Email is required.</span>
+            }
+            @if (employeeForm.controls["email"].errors?.["email"]) {
+              <span>Enter a valid email address, e.g. UncleSena&#64;example.com</span>
+              >
+            }
+          </small>
+        }
       </div>
 
       <div class="form-field">
         <label for="phone">Phone Number</label>
-        <input id="phone" formControlName="phone" placeholder="e.g. 024 000 0000" />
-        <small
-          class="error"
-          *ngIf="formControls.phone.invalid &&
-            (formControls.phone.touched || submitted)"
-        >
-          Phone number is required.
-        </small>
+        <input
+          id="phone"
+          formControlName="phone"
+          placeholder="e.g. 0240000000"
+        />
+        @if (
+          employeeForm.controls["phone"].invalid &&
+          (employeeForm.controls["phone"].touched || submitted)
+        ) {
+          <small class="error">
+            @if (employeeForm.controls["phone"].errors?.["required"]) {
+              <span>Phone number is required.</span>
+            }
+            @if (employeeForm.controls["phone"].errors?.["pattern"]) {
+              <span
+                >Phone number must contain digits only (formatting characters
+                like +, spaces, and hyphens are allowed).</span
+              >
+            }
+          </small>
+        }
       </div>
 
       <div class="form-field">
+  <label for="website">Website</label>
+  <input
+    id="website"
+    formControlName="website"
+    placeholder="e.g. divinedomson.com"
+  />
+  @if (employeeForm.controls['website'].invalid &&
+      (employeeForm.controls['website'].touched || submitted)) {
+    <small class="error">Website is required.</small>
+  }
+</div>
+
+      <div class="form-field">
         <label for="company">Company</label>
-        <input id="company" formControlName="company" placeholder="Company name" />
-        <small
-          class="error"
-          *ngIf="formControls.company.invalid &&
-            (formControls.company.touched || submitted)"
-        >
-          Company is required.
-        </small>
+        <input
+          id="company"
+          formControlName="company"
+          placeholder="Company name"
+        />
+        @if (
+          employeeForm.controls["company"].invalid &&
+          (employeeForm.controls["company"].touched || submitted)
+        ) {
+          <small class="error">Company is required.</small>
+        }
       </div>
 
       <div class="form-field full-width">
         <label for="city">City</label>
         <input id="city" formControlName="city" placeholder="City" />
-        <small
-          class="error"
-          *ngIf="formControls.city.invalid &&
-            (formControls.city.touched || submitted)"
-        >
-          City is required.
-        </small>
+        @if (
+          employeeForm.controls["city"].invalid &&
+          (employeeForm.controls["city"].touched || submitted)
+        ) {
+          <small class="error">City is required.</small>
+        }
       </div>
     </div>
 
+    <div class="form-field">
+  <label for="street">Street</label>
+  <input
+    id="street"
+    formControlName="street"
+    placeholder="Street address"
+  />
+  @if (employeeForm.controls['street'].invalid &&
+      (employeeForm.controls['street'].touched || submitted)) {
+    <small class="error">Street is required.</small>
+  }
+</div>
+
     <div class="form-actions">
-      <a routerLink="/" class="cancel-button">Cancel</a>
-      <button
-        type="submit"
-        class="primary-button"
-        [disabled]="employeeForm.invalid && submitted"
-      >
-        Add Employee
+      <button type="button" class="cancel-button" (click)="closeModal.emit()">
+        Cancel
       </button>
+
+ <button type="submit" class="primary-button">
+  Add Employee
+</button>
+
     </div>
   </form>
 </section>

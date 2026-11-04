@@ -6,11 +6,12 @@ import { RouterLink } from '@angular/router';
 
 import { Employee } from '../../models/employee-models';
 import { EmployeeService } from '../../employee-service/service.service';
+import { AddEmployeeComponent } from '../add-employee/add-employee.component';
 
 @Component({
   selector: 'app-employee-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, AddEmployeeComponent],
   templateUrl: './employee-list.component.html',
   styleUrl: './employee-list.component.css'
 })
@@ -21,6 +22,7 @@ export class EmployeeListComponent implements OnInit {
 
   loading = false;
   errorMessage = '';
+  showAddEmployeeModal = false;
 
   constructor(private employeeService: EmployeeService) {}
 
@@ -75,4 +77,18 @@ export class EmployeeListComponent implements OnInit {
   clearSearch(): void {
     this.searchTerm = '';
   }
+
+  openAddEmployeeModal(): void { console.log('Opening Add Employee Modal');
+    this.showAddEmployeeModal = true;
+  }
+
+  closeAddEmployeeModal(): void {
+    this.showAddEmployeeModal = false;
+  }
+
+
+  addEmployeeToList(employee: Employee): void {
+  this.employees = [employee, ...this.employees];
+  this.closeAddEmployeeModal();
+}
 }

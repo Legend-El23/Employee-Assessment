@@ -213,3 +213,48 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.65);
+}
+
+.modal-container {
+  position: relative;
+  width: min(700px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 16px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: #edf0f5;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .modal-backdrop {
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .modal-container {
+    max-height: 95vh;
+  }
+}

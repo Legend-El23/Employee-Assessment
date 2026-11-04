@@ -8,9 +8,10 @@
     </p>
   </div>
 
-  <a routerLink="/add-employee" class="primary-button">
+  <button type="button" class="primary-button" (click)="openAddEmployeeModal()">
     + Add Employee
-  </a>
+  </button>
+
 </section>
 
 <section class="toolbar">
@@ -89,3 +90,33 @@
     </div>
   </ng-template>
 </ng-container>
+
+<!-- Add Employee Modal -->
+<div
+  *ngIf="showAddEmployeeModal"
+  class="modal-backdrop"
+  (click)="closeAddEmployeeModal()"
+>
+  <div
+    class="modal-container"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    (click)="$event.stopPropagation()"
+  >
+    <button
+      type="button"
+      class="modal-close"
+      (click)="closeAddEmployeeModal()"
+      aria-label="Close modal"
+    >
+      &times;
+    </button>
+
+  <app-add-employee
+    (employeeAdded)="addEmployeeToList($event)"
+    (closeModal)="closeAddEmployeeModal()"
+  >
+  </app-add-employee>
+  </div>
+</div>

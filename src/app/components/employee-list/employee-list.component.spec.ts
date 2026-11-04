@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
 
 import { Employee } from '../../models/employee-models';
-import { ServiceService } from '../../employee-service/service.service';
+import { EmployeeService } from '../../employee-service/service.service';
 
 type SortDirection = 'asc' | 'desc';
 
@@ -16,7 +16,7 @@ type SortDirection = 'asc' | 'desc';
 })
 export class EmployeeList implements OnInit {
 
-  private employeeService = inject(ServiceService);
+  private employeeService = inject(EmployeeService);
   private destroyRef = inject(DestroyRef);
 
   // Component state
